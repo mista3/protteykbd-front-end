@@ -27,5 +27,7 @@ module.exports = {
 	],
 	rules: {
 		'max-len': ['error', 120],
+		'capitalized-comments': ['off'],
+		'object-curly-spacing': ['error', 'always'],
 	},
 };

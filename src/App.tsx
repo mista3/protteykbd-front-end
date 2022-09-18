@@ -1,9 +1,22 @@
-import React from 'react';
+import {Button, Typography} from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
+import React, {useState} from 'react';
 
 export default function App() {
+	const [count, setCount] = useState(0);
+
+	const gridItemSx = {display: 'flex', justifyContent: 'center'};
+
 	return (
-		<div>
-			app
-		</div>
+		<Grid container sx={{margin: 'auto'}}>
+			<Grid xs={12} sx={gridItemSx}>
+				<Typography>count: {count}</Typography>
+			</Grid>
+			<Grid xs={12} sx={gridItemSx}>
+				<Button variant='contained' sx={{margin: '10px'}} onClick={() => {
+					setCount(count + 1);
+				}}>increse</Button>
+			</Grid>
+		</Grid>
 	);
 }

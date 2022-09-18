@@ -7,6 +7,7 @@
  - React
  - TypeScript
  - Redux
+ - MaterialUI
  - Git
  - Yarn
  - Vite
