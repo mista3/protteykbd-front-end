@@ -1,7 +1,7 @@
 {
   "name": "protteykbd-front-end",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,8 +15,18 @@
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": ">=5.31.0",
+    "@typescript-eslint/parser": ">=5.31.0",
     "@vitejs/plugin-react": "^2.1.0",
-    "typescript": "^4.6.4",
+    "eslint": ">=8.0.0",
+    "eslint-config-xo": "^0.42.0",
+    "eslint-config-xo-typescript": "^0.53.0",
+    "eslint-plugin-react": "^7.31.8",
+    "typescript": ">=4.4",
     "vite": "^3.1.0"
-  }
+  },
+  "repository": "git@github.com:mista3/protteykbd-front-end.git",
+  "author": "Maxim Istomin <moistomin@outlook.com>",
+  "license": "MIT",
+  "description": "custom keyboard shop"
 }
