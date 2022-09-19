@@ -1,6 +1,6 @@
-# protteykbd-front-end
+# ProtteyKBD front-end
 
-Фронтенд интернет магазина кастомных клавиатур **ProtteyKBD**
+**ProtteyKBD** - интернет магазин кастомных клавиатур
 
 ## Технологии
 
@@ -10,4 +10,5 @@
  - MaterialUI
  - Git
  - Yarn
+ - ESLint
  - Vite

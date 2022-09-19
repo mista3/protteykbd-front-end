@@ -13,9 +13,7 @@ export default function App() {
 				<Typography>count: {count}</Typography>
 			</Grid>
 			<Grid xs={12} sx={gridItemSx}>
-				<Button variant='contained' sx={{margin: '10px'}} onClick={() => {
-					setCount(count + 1);
-				}}>increse</Button>
+				<Button variant='contained' onClick={() => setCount(count + 1)}>increase</Button>
 			</Grid>
 		</Grid>
 	);
