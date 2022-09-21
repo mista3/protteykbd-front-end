@@ -1,92 +1,30 @@
 module.exports = {
-	env: {
-		browser: true,
-		es2021: true,
-	},
-	extends: [
-		'react-app',
-		'plugin:react/recommended',
-		'plugin:import/recommended',
-		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/recommended-requiring-type-checking',
-		'xo',
-	],
-	overrides: [
-		{
-			extends: [
-				'xo-typescript',
-			],
-			files: [
-				'*.ts',
-				'*.tsx',
-			],
-		},
-	],
-	parserOptions: {
-		ecmaVersion: 'latest',
-		sourceType: 'module',
-	},
-	plugins: [
-		'react',
-	],
+	env: { browser: true,
+		es2021: true },
+	extends: [ 'plugin:react/recommended', 'xo' ],
+	overrides: [ { extends: [ 'xo-typescript' ],
+		files: [ '*.ts', '*.tsx' ] } ],
+	parserOptions: { ecmaVersion: 'latest',
+		sourceType: 'module' },
+	plugins: [ 'react' ],
 	rules: {
-		'max-len': ['error', 120],
+		'max-len': [ 2, 120 ],
 		'capitalized-comments': 'off',
-		'sort-imports': [
-			'error', {
-				ignoreCase: true,
-				ignoreDeclarationSort: true,
-			},
-		],
-		'import/order': [
-			1, {
-				groups: [
-					'external',
-					'builtin',
-					'internal',
-					'sibling',
-					'parent',
-					'index',
-				],
-				pathGroups: [
-					{
-						pattern: 'components',
-						group: 'internal',
-					},
-					{
-						pattern: 'common',
-						group: 'internal',
-					},
-					{
-						pattern: 'routes/ **',
-						group: 'internal',
-					},
-					{
-						pattern: 'assets/**',
-						group: 'internal',
-						position: 'after',
-					},
-				],
-				pathGroupsExcludedImportTypes:
-				['internal'],
-				alphabetize: {
-					order: 'asc',
-					caseInsensitive: true,
-				},
-			},
-		],
-		indent: ['error', 'tab'],
-		'react/no-array-index-key': 'error',
-		'@typescript-eslint/rule-name': 'error',
-		'react/jsx-first-prop-new-line': ['error','multiline'],
-    'react/jsx-max-props-per-line': [
-      'error',
-      { maximum: 1, when: 'multiline' },
-    ],
-    'react/jsx-indent-props': [2, 2],
-    'react/jsx-closing-bracket-location': [
-      'error',
-      'tag-aligned',
-    ],
+		'object-curly-newline': [ 2, {
+			ObjectExpression: { minProperties: 3 },
+			ObjectPattern: { minProperties: 3 },
+			ImportDeclaration: { minProperties: 3 },
+			ExportDeclaration: { minProperties: 3 },
+		} ],
+		'object-property-newline': [ 2, { allowAllPropertiesOnSameLine: true } ],
+		'object-curly-spacing': [ 2, 'always' ],
+		'array-bracket-newline': [ 2, { minItems: 3 } ],
+		'array-element-newline': [ 2, { ArrayExpression: { minItems: 3 },
+			ArrayPattern: { minItems: 3 } } ],
+		'array-bracket-spacing': [ 2, 'always' ],
+		'react/jsx-curly-spacing': [ 2, { when: 'always', children: true } ],
+		'react/jsx-first-prop-new-line': [ 2, 'multiline' ],
+		'react/jsx-newline': [ 2, { prevent: true } ],
+		'react/jsx-curly-newline': [ 2, { multiline: 'forbid', singleline: 'forbid' } ],
 	},
 };
