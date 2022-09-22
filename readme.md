@@ -10,5 +10,5 @@
  - MaterialUI
  - Git
  - Yarn
- - ESLint
+ - Prettier
  - Vite
