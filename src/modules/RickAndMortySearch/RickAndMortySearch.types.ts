@@ -1,3 +1,10 @@
+import { RickAndMortyCharacterEntity } from '@/domain';
+
 export interface RickAndMortySearchState {
-  searchText: string;
+  characters: RickAndMortyCharacterEntity[];
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
 }

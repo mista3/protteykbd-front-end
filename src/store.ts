@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { rickAndMortySearchStoreReducer } from './modules/RickAndMortySearch';
+import { rickAndMortySearchStoreReducer } from '@/modules';
 
 export const store = configureStore({
   reducer: {
