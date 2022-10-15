@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { RickAndMortySearchState } from './RickAndMortySearch.types';
-import { rickAndMortyCharacterService } from '@/services';
+import { SearchState } from './Search.types';
+import { characterService } from '@/services';
+import { CharacterFilterOptions } from '@/domain';
 
-export const initialState: RickAndMortySearchState = {
+const initialState: SearchState = {
   characters: [],
   name: '',
   status: '',
@@ -12,13 +13,13 @@ export const initialState: RickAndMortySearchState = {
   gender: '',
 };
 
-const searchCharacters = createAsyncThunk('rickAndMortySearch/searchCharacters', async () => {
-  const result = await rickAndMortyCharacterService.searchCharacters();
+const searchCharacters = createAsyncThunk('search/searchCharacters', async (params: CharacterFilterOptions) => {
+  const result = await characterService.searchCharacters(params);
   return result;
 });
 
-const rickAndMortySearchStore = createSlice({
-  name: 'rickAndMortySearch',
+const searchStore = createSlice({
+  name: 'search',
   initialState,
   reducers: {
     setName: (state, action: PayloadAction<string>) => {
@@ -44,5 +45,5 @@ const rickAndMortySearchStore = createSlice({
   },
 });
 
-export const rickAndMortySearchStoreActions = { ...rickAndMortySearchStore.actions, searchCharacters };
-export const rickAndMortySearchStoreReducer = rickAndMortySearchStore.reducer;
+export const searchStoreActions = { ...searchStore.actions, searchCharacters };
+export const searchStoreReducer = searchStore.reducer;

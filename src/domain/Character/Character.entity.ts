@@ -1,4 +1,4 @@
-export interface RickAndMortyCharacterEntity {
+export interface CharacterEntity {
   id: number;
   name: string;
   status: string;

@@ -1,7 +1,7 @@
-import { RickAndMortyCharacterEntity } from '@/domain';
+import { CharacterEntity } from '@/domain';
 
-export const rickAndMortyCharacterAdapter = {
-  toInternal: (data: any): RickAndMortyCharacterEntity[] =>
+export const characterAdapter = {
+  toInternal: (data: any): CharacterEntity[] =>
     data.map((item: any) => ({
       id: +item.id,
       name: `${item.name}`,

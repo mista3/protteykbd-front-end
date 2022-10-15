@@ -1,5 +1,5 @@
-import { RickAndMortySearch } from '@/modules';
+import { Search } from '@/modules';
 
 export const App = () => {
-  return <RickAndMortySearch />;
+  return <Search />;
 };

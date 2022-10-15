@@ -1,14 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import { RootState } from '@/store';
-import { rickAndMortySearchStoreActions } from '@/modules';
+import { searchStoreActions } from '@/modules';
 
-export const RickAndMortySearch = () => {
-  const { characters, name, status, species, type, gender } = useSelector(
-    (state: RootState) => state.rickAndMortySearch
-  );
+export const Search = () => {
+  const { characters, name, status, species, type, gender } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
-  const { searchCharacters, setName, setStatus, setSpecies, setType, setGender } = rickAndMortySearchStoreActions;
+  const { searchCharacters, setName, setStatus, setSpecies, setType, setGender } = searchStoreActions;
 
   return (
     <Grid container>
@@ -27,10 +25,12 @@ export const RickAndMortySearch = () => {
       <Grid item xs={2.4}>
         <TextField value={gender} onChange={({ target: { value } }) => dispatch(setGender(value))} label='gender' />
       </Grid>
-      {characters.map(({ name }) => (
-        <Typography>{name}</Typography>
-      ))}
-      <Button onClick={() => dispatch(searchCharacters())}>press</Button>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {characters.map(({ name }) => (
+          <Typography>{name}</Typography>
+        ))}
+      </div>
+      <Button onClick={() => dispatch(searchCharacters({ name, status, species, type, gender }))}>press</Button>
     </Grid>
   );
 };

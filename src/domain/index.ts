@@ -1,1 +1,1 @@
-export * from './RickAndMortyCharacter';
+export * from './Character';

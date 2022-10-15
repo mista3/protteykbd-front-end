@@ -1,1 +1,1 @@
-export * from './RickAndMortySearch';
+export * from './Search';

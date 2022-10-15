@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { rickAndMortySearchStoreReducer } from '@/modules';
+import { searchStoreReducer } from '@/modules';
 
 export const store = configureStore({
   reducer: {
-    rickAndMortySearch: rickAndMortySearchStoreReducer,
+    search: searchStoreReducer,
   },
 });
 
