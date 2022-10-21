@@ -4,12 +4,16 @@
 
 ## Технологии
 
- - React
- - TypeScript
- - Redux
- - Axios
- - MaterialUI
- - Git
- - Yarn
- - Prettier
- - Vite
+- React
+- TypeScript
+- Redux
+- Axios
+- MaterialUI
+- Git
+- Yarn
+- Prettier
+- Vite
+
+TODO:
+
+- [ ] eslint

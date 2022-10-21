@@ -1,0 +1,6 @@
+export enum FETCH_STATUS {
+  IDLE = 'IDLE',
+  PENDING = 'PENDING',
+  FULFILLED = 'FULFILLED',
+  REJECTED = 'REJECTED',
+}

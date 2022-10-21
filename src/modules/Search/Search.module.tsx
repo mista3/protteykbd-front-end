@@ -1,36 +1,87 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import { Button, LinearProgress, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import { RootState } from '@/store';
 import { searchStoreActions } from '@/modules';
+import { CharacterCard } from '@/components';
+import { FETCH_STATUS } from '@/global';
+import { genderOptions, statusOptions } from './Search.consts';
+import { cardsSx, inputSx } from './Search.styles';
 
 export const Search = () => {
-  const { characters, name, status, species, type, gender } = useSelector((state: RootState) => state.search);
-  const dispatch = useDispatch();
+  const { characters, name, status, species, type, gender, fetchStatus } = useSelector(
+    (state: RootState) => state.search
+  );
+  const dispatch = useDispatch<any>();
   const { searchCharacters, setName, setStatus, setSpecies, setType, setGender } = searchStoreActions;
 
   return (
-    <Grid container>
-      <Grid item xs={2.4}>
-        <TextField value={name} onChange={({ target: { value } }) => dispatch(setName(value))} label='name' />
-      </Grid>
-      <Grid item xs={2.4}>
-        <TextField value={status} onChange={({ target: { value } }) => dispatch(setStatus(value))} label='status' />
-      </Grid>
-      <Grid item xs={2.4}>
-        <TextField value={species} onChange={({ target: { value } }) => dispatch(setSpecies(value))} label='species' />
-      </Grid>
-      <Grid item xs={2.4}>
-        <TextField value={type} onChange={({ target: { value } }) => dispatch(setType(value))} label='type' />
-      </Grid>
-      <Grid item xs={2.4}>
-        <TextField value={gender} onChange={({ target: { value } }) => dispatch(setGender(value))} label='gender' />
-      </Grid>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        {characters.map(({ name }) => (
-          <Typography>{name}</Typography>
-        ))}
-      </div>
-      <Button onClick={() => dispatch(searchCharacters({ name, status, species, type, gender }))}>press</Button>
-    </Grid>
+    <Stack spacing={2}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch(searchCharacters({ name, status, species, type, gender }));
+        }}
+      >
+        <Stack direction='row' spacing={1}>
+          <TextField
+            value={name}
+            onChange={({ target: { value } }) => dispatch(setName(value))}
+            label='name'
+            sx={inputSx}
+          />
+          <TextField
+            select
+            value={status}
+            onChange={({ target: { value } }) => dispatch(setStatus(value))}
+            label='status'
+            sx={inputSx}
+          >
+            <MenuItem value=''>Clear</MenuItem>
+            {statusOptions.map((option) => (
+              <MenuItem value={option}>{option}</MenuItem>
+            ))}
+          </TextField>
+          <TextField
+            value={species}
+            onChange={({ target: { value } }) => dispatch(setSpecies(value))}
+            label='species'
+            sx={inputSx}
+          />
+          <TextField
+            value={type}
+            onChange={({ target: { value } }) => dispatch(setType(value))}
+            label='type'
+            sx={inputSx}
+          />
+          <TextField
+            select
+            value={gender}
+            onChange={({ target: { value } }) => dispatch(setGender(value))}
+            label='gender'
+            sx={inputSx}
+          >
+            <MenuItem value=''>Clear</MenuItem>
+            {genderOptions.map((option) => (
+              <MenuItem value={option}>{option}</MenuItem>
+            ))}
+          </TextField>
+          <Button type='submit' variant='contained'>
+            search
+          </Button>
+        </Stack>
+      </form>
+      {
+        {
+          [FETCH_STATUS.IDLE]: <></>,
+          [FETCH_STATUS.PENDING]: <LinearProgress />,
+          [FETCH_STATUS.FULFILLED]: (
+            <Stack direction='row' flexWrap='wrap' gap={2}>
+              {characters.length ? characters.map((character) => <CharacterCard {...character} />) : 'нету'}
+            </Stack>
+          ),
+          [FETCH_STATUS.REJECTED]: <Typography>No results found</Typography>,
+        }[fetchStatus]
+      }
+    </Stack>
   );
 };

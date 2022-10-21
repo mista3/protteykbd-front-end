@@ -1,8 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { SearchState } from './Search.types';
 import { characterService } from '@/services';
-import { CharacterFilterOptions } from '@/domain';
+import { CharacterEntity, CharacterFilterOptions } from '@/domain';
+import { FETCH_STATUS } from '@/global';
+
+interface SearchState {
+  characters: CharacterEntity[];
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  fetchStatus: FETCH_STATUS;
+}
 
 const initialState: SearchState = {
   characters: [],
@@ -11,6 +21,7 @@ const initialState: SearchState = {
   species: '',
   type: '',
   gender: '',
+  fetchStatus: FETCH_STATUS.IDLE,
 };
 
 const searchCharacters = createAsyncThunk('search/searchCharacters', async (params: CharacterFilterOptions) => {
@@ -39,9 +50,17 @@ const searchStore = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(searchCharacters.fulfilled, (state, action) => {
-      state.characters = action.payload;
-    });
+    builder
+      .addCase(searchCharacters.pending, (state) => {
+        state.fetchStatus = FETCH_STATUS.PENDING;
+      })
+      .addCase(searchCharacters.fulfilled, (state, action) => {
+        state.fetchStatus = FETCH_STATUS.FULFILLED;
+        state.characters = action.payload;
+      })
+      .addCase(searchCharacters.rejected, (state) => {
+        state.fetchStatus = FETCH_STATUS.REJECTED;
+      });
   },
 });
 
