@@ -17,3 +17,7 @@
 TODO:
 
 - [ ] eslint
+- [x] autoimport svg as react component
+- [ ] breadcrumbs
+- [ ] product preview
+- [ ] steam card effect

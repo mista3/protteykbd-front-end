@@ -1,7 +1,7 @@
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { CharacterEntity } from '@/domain';
 
-export const CharacterCard = ({ id, name, image, status, gender, species, type }: CharacterEntity) => {
+export const CharacterCard = ({ name, image, status, gender, species, type }: CharacterEntity) => {
   return (
     <Card sx={{ maxWidth: 300 }}>
       <CardMedia component='img' height='150' image={image} alt={name} />

@@ -5,7 +5,8 @@ import { searchStoreActions } from '@/modules';
 import { CharacterCard } from '@/components';
 import { FETCH_STATUS } from '@/global';
 import { genderOptions, statusOptions } from './Search.consts';
-import { cardsSx, inputSx } from './Search.styles';
+import { inputSx } from './Search.styles';
+import { IconSettings } from '@/icons';
 
 export const Search = () => {
   const { characters, name, status, species, type, gender, fetchStatus } = useSelector(
@@ -16,6 +17,7 @@ export const Search = () => {
 
   return (
     <Stack spacing={2}>
+      <IconSettings />
       <form
         onSubmit={(e) => {
           e.preventDefault();
