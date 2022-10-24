@@ -1,1 +1,2 @@
-export * from './Character';
+export * from './entities';
+export * from './adapters';

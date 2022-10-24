@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { characterService } from '@/services';
 import { CharacterEntity, CharacterFilterOptions } from '@/domain';
-import { FETCH_STATUS } from '@/global';
+import { FETCH_STATUS } from '@/globals';
 
 interface SearchState {
   characters: CharacterEntity[];

@@ -3,7 +3,7 @@ import { Button, LinearProgress, MenuItem, Stack, TextField, Typography } from '
 import { RootState } from '@/store';
 import { searchStoreActions } from '@/modules';
 import { CharacterCard } from '@/components';
-import { FETCH_STATUS } from '@/global';
+import { FETCH_STATUS } from '@/globals';
 import { genderOptions, statusOptions } from './Search.consts';
 import { inputSx } from './Search.styles';
 import { IconSettings } from '@/icons';
