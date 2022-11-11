@@ -11,7 +11,7 @@ import './NavBar.scss';
 
 export const NavBar = observer(() => {
   const [scrollPosition, setScrollPosition] = useState(0);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -29,8 +29,8 @@ export const NavBar = observer(() => {
   const isThin = useMemo(() => scrollPosition > 100, [scrollPosition]);
 
   return (
-    <Paper className={`nav-bar ${isThin ? 'thin' : ''}` } elevation={1}>
-      <div className='title' onClick={()=>navigate(routes.main)}>
+    <Paper className={`nav-bar ${isThin ? 'thin' : ''}`} elevation={1}>
+      <div className='title' onClick={() => navigate(routes.main)}>
         <IconLogo className='logo' />
         <Typography fontWeight='bold'>ProtteyKBD</Typography>
       </div>

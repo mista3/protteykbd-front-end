@@ -6,8 +6,8 @@ import './Payment.scss';
 export const Payment = observer(() => {
   return (
     <div className='payment'>
-      <TextField label='Почта' helperText='На почту придет чек об оплате' fullWidth required />
-      <TextField multiline label='Комментарий' fullWidth />
+      <TextField label='Почта' helperText='На почту придет чек об оплате' fullWidth required color='secondary' />
+      <TextField multiline label='Комментарий' fullWidth color='secondary' />
     </div>
   );
 });

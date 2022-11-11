@@ -7,7 +7,7 @@
 - React
 - TypeScript
 - Mobx
-- Axios
+- Ky
 - MaterialUI
 - Git
 - Yarn

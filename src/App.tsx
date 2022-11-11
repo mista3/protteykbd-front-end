@@ -17,9 +17,9 @@ export const App = observer(() => {
 
   return (
     <ThemeProvider theme={themeStore.isDark ? darkTheme : lightTheme}>
-      <Paper className='app' color='background'  >
+      <Paper className='app' color='background'>
         <BrowserRouter>
-        <NavBar />
+          <NavBar />
           <Routes>
             <Route path={routes.main} element={<MainPage />} />
             <Route path={routes.order} element={<OrderPage />} />

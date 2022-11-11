@@ -26,7 +26,7 @@ export const KeyboardCard = observer(({ imageLeft, noButton }: Props) => {
           corporis eveniet fugit non ipsam odio dicta voluptate est commodi id rem veritatis repellat quo.
         </Typography>
         {!noButton && (
-          <Button variant='contained' onClick={() => navigate('/order')} disableElevation>
+          <Button variant='contained' onClick={() => navigate('/order')}>
             Оформить заказ
           </Button>
         )}
