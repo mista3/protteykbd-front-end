@@ -1,0 +1,23 @@
+.keyboard-card {
+  display: flex;
+  width: 600px;
+  height: 240px;
+  .img {
+    width: 320px;
+  }
+  .body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .content {
+      display: flex;
+      flex-direction: column;
+      .description {
+        margin-top: 16px;
+      }
+    }
+    .buttons {
+      margin: auto 0 0 auto;
+    }
+  }
+}

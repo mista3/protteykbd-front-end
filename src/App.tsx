@@ -17,7 +17,7 @@ export const App = observer(() => {
 
   return (
     <ThemeProvider theme={themeStore.isDark ? darkTheme : lightTheme}>
-      <Paper className='app' color='background'>
+      <Paper className='app' color='background' square>
         <BrowserRouter>
           <NavBar />
           <Routes>

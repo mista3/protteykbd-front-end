@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Typography, IconButton, Paper } from '@mui/material';
-import { LightModeRounded, DarkModeRounded } from '@mui/icons-material';
+import { LightModeRounded, DarkModeRounded, LoginRounded } from '@mui/icons-material';
 import { IconLogo } from '@/icons';
 import { themeStore } from '@/stores';
 import { routes } from '@/routes';
@@ -29,14 +29,16 @@ export const NavBar = observer(() => {
   const isThin = useMemo(() => scrollPosition > 100, [scrollPosition]);
 
   return (
-    <Paper className={`nav-bar ${isThin ? 'thin' : ''}`} elevation={1}>
+    <Paper className={`nav-bar ${isThin ? 'thin' : ''}`} elevation={1} square>
       <div className='title' onClick={() => navigate(routes.main)}>
         <IconLogo className='logo' />
         <Typography fontWeight='bold'>ProtteyKBD</Typography>
       </div>
-      <IconButton onClick={() => themeStore.toggle()}>
-        {themeStore.isDark ? <DarkModeRounded /> : <LightModeRounded />}
-      </IconButton>
+      <div className='buttons'>
+        <IconButton onClick={() => themeStore.toggle()}>
+          {themeStore.isDark ? <DarkModeRounded /> : <LightModeRounded />}
+        </IconButton>
+      </div>
     </Paper>
   );
 });

@@ -1,11 +1,15 @@
-import { createTheme } from '@mui/material';
+import { createTheme, ThemeOptions } from '@mui/material';
 
-const baseOptions = {
+const baseOptions: ThemeOptions = {
   components: {
     MuiPaper: {
       defaultProps: {
         elevation: 0,
-        square: true,
+      },
+    },
+    MuiButton: {
+      defaultProps: {
+        variant: 'contained',
       },
     },
   },
