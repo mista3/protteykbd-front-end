@@ -1,1 +1,1 @@
-export * from './ItemEntity'
+export * from './ItemEntity';

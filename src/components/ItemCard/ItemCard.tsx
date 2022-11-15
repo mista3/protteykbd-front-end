@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Typography, Button, Card, CardActions, CardMedia, CardContent } from '@mui/material';
-import { ShoppingCartRounded } from '@mui/icons-material';
+import { AddShoppingCartRounded } from '@mui/icons-material';
 import { ItemEntity } from '@/entities';
 
 import './ItemCard.scss';
@@ -17,12 +17,17 @@ export const ItemCard = observer(({ image, title, description, price }: ItemEnti
             {title}
           </Typography>
           <Typography variant='subtitle2' color='text.secondary' component='div' className='description'>
-            {description}
+            {description.split('\n').map((value) => (
+              <>
+                {value}
+                <br />
+              </>
+            ))}
           </Typography>
         </CardContent>
         <CardActions className='buttons'>
           <Button size='small'>
-            <ShoppingCartRounded />
+            <AddShoppingCartRounded />
           </Button>
           <Button size='small'>Заказать</Button>
         </CardActions>
