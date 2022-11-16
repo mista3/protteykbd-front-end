@@ -3,5 +3,6 @@ export interface ItemEntity {
   title: string;
   description: string;
   price: number;
+  sale?: number;
   image: string;
 }

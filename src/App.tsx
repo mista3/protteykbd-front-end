@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { ThemeProvider, useMediaQuery, Paper } from '@mui/material';
-import { MainPage, OrderPage } from '@/pages';
+import { MainPage, OrderPage, LikePage } from '@/pages';
 import { NavBar } from '@/components';
 import { themeStore } from '@/stores';
 import { darkTheme, lightTheme } from '@/themes';
-import { routes } from '@/routes';
+import { ROUTES } from '@/routes';
 
 import './App.scss';
 
@@ -21,8 +21,10 @@ export const App = observer(() => {
         <BrowserRouter>
           <NavBar />
           <Routes>
-            <Route path={routes.main} element={<MainPage />} />
-            <Route path={routes.order} element={<OrderPage />} />
+            <Route path={ROUTES.HOME} element={<MainPage />} />
+            <Route path={ROUTES.ORDER} element={<OrderPage />} />
+            <Route path={ROUTES.LIKE} element={<LikePage />} />
+            <Route path='*' element={<Navigate to={ROUTES.HOME} />} />
           </Routes>
         </BrowserRouter>
       </Paper>
@@ -30,4 +32,4 @@ export const App = observer(() => {
   );
 });
 
-// TODO: production mode
+// TODO: production mode, loader on start, signup / signin

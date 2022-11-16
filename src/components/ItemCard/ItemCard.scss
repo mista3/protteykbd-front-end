@@ -2,11 +2,16 @@
   display: flex;
   flex-direction: column;
   width: 320px;
+  position: relative;
   .img {
     width: 320px;
     height: 240px;
   }
-  .price {
-    margin-right: auto;
+  .sale {
+    margin-left: 8px;
+    text-decoration: line-through;
+  }
+  .buttons {
+    margin-left: auto;
   }
 }

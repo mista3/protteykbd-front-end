@@ -8,7 +8,7 @@ export const Search = observer(() => {
   return (
     <div className='search'>
       <TextField />
-      <IconButton>
+      <IconButton className='button'>
         <SearchRounded />
       </IconButton>
     </div>

@@ -1,62 +1,58 @@
-import { useEffect, useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Typography, IconButton, Paper } from '@mui/material';
 import {
   LightModeRounded,
   DarkModeRounded,
-  LoginRounded,
   ShoppingCartRounded,
   FavoriteRounded,
   HistoryRounded,
 } from '@mui/icons-material';
 import { IconLogo } from '@/icons';
 import { themeStore } from '@/stores';
-import { routes } from '@/routes';
+import { getRouteLabel, ROUTES } from '@/routes';
 import { Search } from '@/components';
+import { useTitle } from '@/hooks';
 
 import './NavBar.scss';
+import { useEffect } from 'react';
 
 export const NavBar = observer(() => {
-  const [scrollPosition, setScrollPosition] = useState(0);
   const nav = useNavigate();
-
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+  const location = useLocation();
+  const { title, setTitle } = useTitle();
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  const isThin = useMemo(() => scrollPosition > 100, [scrollPosition]);
+    setTitle(getRouteLabel(location.pathname));
+  }, [location]);
 
   return (
-    <Paper className={`nav-bar ${isThin ? 'thin' : ''}`} elevation={1} square>
-      <div className='title' onClick={() => nav(routes.main)}>
+    <Paper className='nav-bar' elevation={1} square>
+      <div className='title' onClick={() => nav(ROUTES.HOME)}>
         <IconLogo className='logo' />
-        <Typography fontWeight='bold'>ProtteyKBD</Typography>
+        <Typography fontWeight='bold' variant='h3'>
+          ProtteyKBD
+        </Typography>
       </div>
       <Search />
       <div className='buttons'>
-        <IconButton onClick={() => nav(routes.history)}>
+        <IconButton
+          onClick={() => nav(ROUTES.HISTORY)}
+          color={location.pathname === ROUTES.HISTORY ? 'primary' : 'default'}
+        >
           <HistoryRounded />
         </IconButton>
-        <IconButton onClick={() => nav(routes.favorite)}>
+        <IconButton onClick={() => nav(ROUTES.LIKE)} color={location.pathname === ROUTES.LIKE ? 'primary' : 'default'}>
           <FavoriteRounded />
         </IconButton>
-        <IconButton onClick={() => nav(routes.cart)}>
+        <IconButton onClick={() => nav(ROUTES.CART)} color={location.pathname === ROUTES.CART ? 'primary' : 'default'}>
           <ShoppingCartRounded />
         </IconButton>
         <IconButton onClick={() => themeStore.toggle()}>
           {themeStore.isDark ? <DarkModeRounded /> : <LightModeRounded />}
         </IconButton>
       </div>
+      <Typography className='breadcrumb'>{title}</Typography>
     </Paper>
   );
 });
