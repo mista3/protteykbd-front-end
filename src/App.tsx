@@ -9,6 +9,7 @@ import { darkTheme, lightTheme } from '@/themes';
 import { ROUTES } from '@/routes';
 
 import './App.scss';
+import { LoginDialog } from './components/LoginDialog';
 
 export const App = observer(() => {
   const preferDarkTheme = useMediaQuery('(prefers-color-scheme: dark)');
@@ -26,10 +27,11 @@ export const App = observer(() => {
             <Route path={ROUTES.LIKE} element={<LikePage />} />
             <Route path='*' element={<Navigate to={ROUTES.HOME} />} />
           </Routes>
+          <LoginDialog />
         </BrowserRouter>
       </Paper>
     </ThemeProvider>
   );
 });
 
-// TODO: production mode, loader on start, signup / signin
+// TODO: production mode, loader on start

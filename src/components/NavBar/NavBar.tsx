@@ -7,9 +7,10 @@ import {
   ShoppingCartRounded,
   FavoriteRounded,
   HistoryRounded,
+  LoginRounded,
 } from '@mui/icons-material';
 import { IconLogo } from '@/icons';
-import { themeStore } from '@/stores';
+import { loginStore, themeStore } from '@/stores';
 import { getRouteLabel, ROUTES } from '@/routes';
 import { Search } from '@/components';
 import { useTitle } from '@/hooks';
@@ -50,6 +51,9 @@ export const NavBar = observer(() => {
         </IconButton>
         <IconButton onClick={() => themeStore.toggle()}>
           {themeStore.isDark ? <DarkModeRounded /> : <LightModeRounded />}
+        </IconButton>
+        <IconButton onClick={() => loginStore.openDialog()} color={loginStore.isDialogOpen ? 'primary' : 'default'}>
+          <LoginRounded />
         </IconButton>
       </div>
       <Typography className='breadcrumb'>{title}</Typography>

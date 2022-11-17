@@ -23,3 +23,23 @@
     margin: 0 auto;
   }
 }
+
+.MuiDialog-container .MuiPaper-root {
+  .MuiTypography-root {
+    text-align: center;
+  }
+  .MuiDialogContent-root {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 16px;
+    padding: 16px 24px;
+    align-items: center;
+    .MuiFormControl-root {
+      width: 100%;
+    }
+  }
+  .MuiDialogActions-root {
+    align-self: center;
+  }
+}
