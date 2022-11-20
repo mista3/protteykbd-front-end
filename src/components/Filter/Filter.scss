@@ -1,6 +1,7 @@
-.items {
+.filter {
+  margin: 24px 32px 0;
   display: flex;
+  gap: 8px;
   flex-wrap: wrap;
-  gap: 32px;
   justify-content: center;
 }

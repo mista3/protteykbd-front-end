@@ -1,27 +1,20 @@
+import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Typography, IconButton, Paper } from '@mui/material';
-import {
-  LightModeRounded,
-  DarkModeRounded,
-  ShoppingCartRounded,
-  FavoriteRounded,
-  HistoryRounded,
-  LoginRounded,
-} from '@mui/icons-material';
+import { ShoppingCartRounded, FavoriteRounded, HistoryRounded, LoginRounded } from '@mui/icons-material';
 import { IconLogo } from '@/icons';
-import { loginStore, themeStore } from '@/stores';
+import { loginStore } from '@/stores';
 import { getRouteLabel, ROUTES } from '@/routes';
 import { Search } from '@/components';
 import { useTitle } from '@/hooks';
 
 import './NavBar.scss';
-import { useEffect } from 'react';
 
 export const NavBar = observer(() => {
   const nav = useNavigate();
   const location = useLocation();
-  const { title, setTitle } = useTitle();
+  const [title, setTitle] = useTitle();
 
   useEffect(() => {
     setTitle(getRouteLabel(location.pathname));
@@ -49,14 +42,13 @@ export const NavBar = observer(() => {
         <IconButton onClick={() => nav(ROUTES.CART)} color={location.pathname === ROUTES.CART ? 'primary' : 'default'}>
           <ShoppingCartRounded />
         </IconButton>
-        <IconButton onClick={() => themeStore.toggle()}>
-          {themeStore.isDark ? <DarkModeRounded /> : <LightModeRounded />}
-        </IconButton>
         <IconButton onClick={() => loginStore.openDialog()} color={loginStore.isDialogOpen ? 'primary' : 'default'}>
           <LoginRounded />
         </IconButton>
       </div>
-      <Typography className='breadcrumb'>{title}</Typography>
+      <Typography variant='overline' className='breadcrumb'>
+        {title}
+      </Typography>
     </Paper>
   );
 });

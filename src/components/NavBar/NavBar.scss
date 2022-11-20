@@ -15,12 +15,12 @@
     cursor: pointer;
     .logo {
       width: 56px;
-      transition: transform 150ms ease-in-out;
+      transition: transform 200ms ease-in-out;
       position: relative;
     }
     &:hover {
       .logo {
-        transform: scale(1.05);
+        transform: scale(1.05) rotate(5deg);
       }
     }
   }
@@ -31,7 +31,7 @@
   }
   .breadcrumb {
     position: absolute;
-    right: 8px;
-    top: 96px;
+    left: 8px;
+    top: 90px;
   }
 }

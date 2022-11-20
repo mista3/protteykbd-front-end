@@ -29,13 +29,25 @@ class ItemStore {
       price: 6000,
     },
   ];
+  private _loading = true;
 
   constructor() {
     makeAutoObservable(this);
   }
 
+  async fetchItems() {
+    //lading=true
+    //const res = await fetch
+    //this._items = res
+    //lading=false
+  }
+
   get items() {
     return [...this._items, ...this._items, ...this._items, ...this._items];
+  }
+
+  get loading() {
+    return this._loading;
   }
 }
 

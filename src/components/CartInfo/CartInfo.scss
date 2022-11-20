@@ -1,0 +1,18 @@
+.cart-info {
+  min-width: 288px;
+  height: fit-content;
+  transition: transform 100ms;
+  padding: 16px;
+  margin-right: 32px;
+  .MuiCardContent-root {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .MuiDivider-root {
+    margin-top: 16px;
+  }
+  .MuiCardActions-root {
+    justify-content: center;
+  }
+}

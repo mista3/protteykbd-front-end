@@ -4,3 +4,6 @@ export * from './Payment/Payment';
 export * from './Search/Search';
 export * from './Items/Items';
 export * from './LoginDialog';
+export * from './CartInfo/CartInfo';
+export * from './Filter/Filter';
+export * from './SplashScreen/SplashScreen';
