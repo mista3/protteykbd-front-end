@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: slide 3s forwards;
+  animation: slide 3s forwards ease-in-out;
   .logo {
     width: 256px;
     margin-bottom: 32px;
@@ -22,7 +22,7 @@
 }
 
 @keyframes slide {
-  50% {
+  66% {
     transform: none;
   }
   to {

@@ -14,7 +14,6 @@
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.5",
-    "cloudpayments": "^6.0.1",
     "ky": "^0.32.2",
     "mobx": "^6.6.2",
     "mobx-react-lite": "^3.4.0",

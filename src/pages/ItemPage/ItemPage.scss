@@ -1,0 +1,19 @@
+.item-page {
+  display: flex;
+  justify-content: center;
+  .MuiCard-root {
+    max-width: 800px;
+  }
+  figure {
+    width: 600px;
+    background-repeat: no-repeat;
+    &:hover img {
+      opacity: 0;
+    }
+  }
+  img {
+    display: block;
+    width: 100%;
+    pointer-events: none;
+  }
+}
