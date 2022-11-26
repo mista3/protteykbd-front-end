@@ -33,7 +33,7 @@ export const App = observer(() => {
             <Route path={ROUTES.ORDER} element={<OrderPage />} />
             <Route path={ROUTES.LIKE} element={<LikePage />} />
             <Route path={ROUTES.CART} element={<CartPage />} />
-            <Route path={ROUTES.ITEM} element={<ItemPage />} />
+            <Route path={`${ROUTES.ITEM}/:id`} element={<ItemPage />} />
             <Route path='*' element={<Navigate to={ROUTES.HOME} />} />
           </Routes>
           <LoginDialog />
@@ -44,4 +44,4 @@ export const App = observer(() => {
   );
 });
 
-// TODO: production mode, recomendations, steam card effect
+// TODO: production mode, recomendations

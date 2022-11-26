@@ -9,16 +9,20 @@ import { ROUTES } from '@/routes';
 
 import './ItemCard.scss';
 
-export const ItemCard = observer(({ image, title, price, sale }: ItemEntity) => {
+export const ItemCard = observer(({ image, title, price, sale, id }: ItemEntity) => {
   const [isLiked, setLiked] = useState(false);
   const [isCart, setCart] = useState(false);
 
   const nav = useNavigate();
 
+  const onClick = () => {
+    nav(`${ROUTES.ITEM}/${id}`)
+  }
+
   return (
     <SteamCardWrapper>
       <Card className='keyboard-card' elevation={1}>
-        <CardMedia component='img' className='img' image={image} />
+        <CardMedia component='img' className='img' image={image} onClick={onClick} />
         <CardContent>
           <Typography variant='h6'>{title}</Typography>
           <Typography component='span' variant='h5'>
