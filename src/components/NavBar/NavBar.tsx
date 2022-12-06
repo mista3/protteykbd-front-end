@@ -30,12 +30,6 @@ export const NavBar = observer(() => {
       </div>
       <Search />
       <div className='buttons'>
-        <IconButton
-          onClick={() => nav(ROUTES.HISTORY)}
-          color={location.pathname === ROUTES.HISTORY ? 'primary' : 'default'}
-        >
-          <HistoryRounded />
-        </IconButton>
         <IconButton onClick={() => nav(ROUTES.LIKE)} color={location.pathname === ROUTES.LIKE ? 'primary' : 'default'}>
           <FavoriteRounded />
         </IconButton>
