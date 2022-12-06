@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Typography, IconButton, Paper } from '@mui/material';
-import { ShoppingCartRounded, FavoriteRounded, HistoryRounded, LoginRounded } from '@mui/icons-material';
+import { ShoppingCartRounded, FavoriteRounded, LoginRounded } from '@mui/icons-material';
 import { IconLogo } from '@/icons';
 import { loginStore } from '@/stores';
 import { getRouteLabel, ROUTES } from '@/routes';
-import { Search } from '@/components';
+import { Search, Filter } from '@/components';
 import { useTitle } from '@/hooks';
 
 import './NavBar.scss';
@@ -43,6 +43,7 @@ export const NavBar = observer(() => {
       <Typography variant='overline' className='breadcrumb'>
         {title}
       </Typography>
+      <Filter />
     </Paper>
   );
 });

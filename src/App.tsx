@@ -27,7 +27,6 @@ export const App = observer(() => {
       <Paper className='app' color='background' square>
         <BrowserRouter>
           <NavBar />
-          {/* <Filter /> */}
           <Routes>
             <Route path={ROUTES.HOME} element={<MainPage />} />
             <Route path={ROUTES.ORDER} element={<OrderPage />} />

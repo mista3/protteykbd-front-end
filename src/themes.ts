@@ -10,6 +10,9 @@ export const darkTheme = createTheme({
     secondary: {
       main: '#e7e7e7',
     },
+    info:{
+      main:'#313131',
+    }
   },
   components: {
     MuiPaper: {

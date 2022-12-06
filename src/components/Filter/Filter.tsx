@@ -23,7 +23,8 @@ export const Filter = observer(() => {
       {Object.entries(categories).map(([label, selected]) => (
         <Chip
           label={label}
-          variant={selected ? 'filled' : 'outlined'}
+          variant='filled'
+          color={selected ? 'primary' : 'info'}
           onClick={() => setCategories({ ...categories, [label]: !selected })}
         />
       ))}
