@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material';
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    background: { paper: '#262626' },
+    background: { paper: '#161616' },
     primary: {
       main: '#cd1818',
     },
@@ -13,6 +13,13 @@ export const darkTheme = createTheme({
     info:{
       main:'#313131',
     }
+  },
+  typography: {
+    fontFamily: [
+      'Jost',
+      'Roboto',
+      'sans-serif',
+    ].join(','),
   },
   components: {
     MuiPaper: {

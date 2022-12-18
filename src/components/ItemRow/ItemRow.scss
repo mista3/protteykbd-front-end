@@ -1,0 +1,11 @@
+.item-row {
+  margin: 0 32px;
+  display: flex;
+  flex-direction: column;
+  .items {
+    display: flex;
+    gap: 16px;
+    overflow: auto;
+    margin-top: 8px;
+  }
+}

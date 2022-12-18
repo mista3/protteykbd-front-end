@@ -1,7 +1,7 @@
 .keyboard-card {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  min-width: 320px;
   position: relative;
   .img {
     width: 320px;

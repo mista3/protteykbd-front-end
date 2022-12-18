@@ -24,11 +24,11 @@ export const NavBar = observer(() => {
     <Paper className='nav-bar' elevation={1} square>
       <div className='title' onClick={() => nav(ROUTES.HOME)}>
         <IconLogo className='logo' />
-        <Typography fontWeight='bold' variant='h3'>
-          ProtteyKBD
+        <Typography fontWeight='bold' variant='h4'>
+          Prottey
         </Typography>
       </div>
-      <Search />
+      {/* <Search /> */}
       <div className='buttons'>
         <IconButton onClick={() => nav(ROUTES.LIKE)} color={location.pathname === ROUTES.LIKE ? 'primary' : 'default'}>
           <FavoriteRounded />
@@ -43,7 +43,7 @@ export const NavBar = observer(() => {
       <Typography variant='overline' className='breadcrumb'>
         {title}
       </Typography>
-      <Filter />
+      {/* <Filter /> */}
     </Paper>
   );
 });
