@@ -2,4 +2,27 @@
   display: flex;
   flex-direction: column;
   gap: 64px;
+  .slide-wrapper {
+    position: relative;
+    > .nav {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      z-index: 1;
+      background: linear-gradient(to right, #161616, transparent);
+      padding: 32px;
+      opacity: 0.9;
+      height: 100%;
+      width: 500px;
+      top: 0;
+    }
+    .each-slide-effect > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      aspect-ratio: 4/3;
+      background-position: center;
+    }
+  }
 }

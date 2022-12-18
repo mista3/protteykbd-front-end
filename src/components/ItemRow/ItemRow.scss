@@ -1,11 +1,12 @@
 .item-row {
-  margin: 0 32px;
   display: flex;
   flex-direction: column;
+  .space {
+    min-width: 16px;
+  }
   .items {
     display: flex;
     gap: 16px;
-    overflow: auto;
     margin-top: 8px;
   }
 }
