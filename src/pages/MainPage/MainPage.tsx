@@ -1,9 +1,10 @@
 import { observer } from 'mobx-react-lite';
 import { Slide } from 'react-slideshow-image';
-import { Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import { ItemRow } from '@/components';
 
 import './MainPage.scss';
+import { LinkRounded } from '@mui/icons-material';
 
 const images = ['src/images/black-white.jpg', 'src/images/milky-honey.jpg', 'src/images/white-tester.jpg'];
 
@@ -19,14 +20,35 @@ export const MainPage = observer(() => {
           ))}
         </Slide>
         <div className='nav'>
-          <Typography variant='h5'>Готовые сборки</Typography>
-          <Typography variant='h5'>Кейкапы</Typography>
-          <Typography variant='h5'>Свичи</Typography>
+          <div>
+            <LinkRounded className='anchor' />
+            <Link variant='h5' textTransform='uppercase' href='#Готовые сборки' underline='hover'>
+              Готовые сборки
+            </Link>
+          </div>
+          <div>
+            <LinkRounded className='anchor' />
+            <Link variant='h5' textTransform='uppercase' href='#Кейкапы' underline='hover'>
+              Кейкапы
+            </Link>
+          </div>
+          <div>
+            <LinkRounded className='anchor' />
+            <Link variant='h5' textTransform='uppercase' href='#Свичи' underline='hover'>
+              Свичи
+            </Link>
+          </div>
         </div>
       </div>
-      <ItemRow title='Готовые сборки' />
-      <ItemRow title='Кейкапы' />
-      <ItemRow title='Свичи' />
+      <div id='Готовые сборки'>
+        <ItemRow title='Готовые сборки' />
+      </div>
+      <div id='Кейкапы'>
+        <ItemRow title='Кейкапы' />
+      </div>
+      <div id='Свичи'>
+        <ItemRow title='Свичи' />
+      </div>
     </div>
   );
 });

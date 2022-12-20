@@ -2,7 +2,7 @@ import { loginStore } from '@/stores';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Link, TextField } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 
-import './LoginDialog.scss'
+import './LoginDialog.scss';
 
 export const LoginDialog = observer(() => {
   return (

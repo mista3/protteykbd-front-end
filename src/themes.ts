@@ -10,16 +10,12 @@ export const darkTheme = createTheme({
     secondary: {
       main: '#e7e7e7',
     },
-    info:{
-      main:'#313131',
-    }
+    info: {
+      main: '#313131',
+    },
   },
   typography: {
-    fontFamily: [
-      'Jost',
-      'Roboto',
-      'sans-serif',
-    ].join(','),
+    fontFamily: ['Jost', 'Roboto', 'sans-serif'].join(','),
   },
   components: {
     MuiPaper: {
