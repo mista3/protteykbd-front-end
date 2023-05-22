@@ -2,18 +2,47 @@
   display: flex;
   justify-content: center;
   .MuiCard-root {
-    max-width: 800px;
+    max-height: 400px;
   }
-  figure {
-    width: 600px;
-    background-repeat: no-repeat;
-    &:hover img {
-      opacity: 0;
+
+  .item-card {
+    height: 400px;
+    display: flex;
+    margin: auto;
+  }
+
+  .item-image {
+    width: 400px;
+  }
+
+  .divider {
+    content: '';
+    height: 1px;
+    border-radius: 4px;
+    background-color: gray;
+    margin: 8px;
+  }
+
+  .description {
+    max-height: 268px;
+    max-width: 400px;
+    overflow: auto;
+    .description-image {
+      text-indent: -16px;
+      margin-left: 16px;
     }
   }
-  img {
-    display: block;
-    width: 100%;
-    pointer-events: none;
+
+  .quantity {
+    color: gray;
+  }
+
+  .buttons {
+    margin: auto 0 0 auto;
+  }
+
+  .content-box {
+    display: flex;
+    flex-direction: column;
   }
 }

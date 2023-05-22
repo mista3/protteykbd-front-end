@@ -1,7 +1,20 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import { Typography, Button, Card, CardActions, CardMedia, CardContent, IconButton, Checkbox } from '@mui/material';
+import { Image } from 'antd';
+import {
+  Typography,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  IconButton,
+  Checkbox,
+  Tooltip,
+  styled,
+  tooltipClasses, 
+  TooltipProps
+} from '@mui/material';
 import {
   AddShoppingCartRounded,
   FavoriteRounded,
@@ -13,7 +26,21 @@ import { ROUTES } from '@/routes';
 
 import './ItemCard.scss';
 
-export const ItemCard = observer(({ image, title, price, sale, id }: ItemEntity) => {
+const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+  },
+  [`& .${tooltipClasses.arrow}`]: {
+    color: theme.palette.common.white,
+  },
+}));
+
+export const ItemCard = observer(({ image, name, price, sale, id }: ItemEntity) => {
   const [isLiked, setLiked] = useState(false);
   const [isCart, setCart] = useState(false);
 
@@ -27,10 +54,18 @@ export const ItemCard = observer(({ image, title, price, sale, id }: ItemEntity)
 
   return (
     <Card className='keyboard-card' elevation={1}>
-      <CardMedia component='img' className='img' image={image} onClick={onClick} />
+      <Image
+        className='keyboard-image'
+        src={`https://ik.imagekit.io/xiultnofr/tr:h-640,w-640/${image}.jpg`}
+        onClick={onClick}
+        preview={false}
+        placeholder={<div className='image-placeholder'/>}
+      />
       <CardContent>
-        <Typography variant='h6'>{title}</Typography>
-        <Typography component='span' variant='h5'>
+        <LightTooltip  title={name} arrow placement="top" className='keyboard-tooltip'>
+          <Typography variant='body1' className='keyboard-name'>{name}</Typography>
+        </LightTooltip>
+        <Typography component='span' variant='h6'>
           {price.toLocaleString('ru')} ₽
         </Typography>
         {!!sale && (

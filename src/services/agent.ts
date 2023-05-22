@@ -4,7 +4,7 @@ export const agent = ky.create({
   hooks: {
     beforeError: [
       (error) => {
-        console.log('error');
+        console.log(error);
         return error;
       },
     ],

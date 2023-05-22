@@ -24,21 +24,21 @@ export const App = observer(() => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Paper className='app' color='background' square>
-        <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route path={ROUTES.HOME} element={<MainPage />} />
-            <Route path={ROUTES.ORDER} element={<OrderPage />} />
-            <Route path={ROUTES.LIKE} element={<LikePage />} />
-            <Route path={ROUTES.CART} element={<CartPage />} />
-            <Route path={`${ROUTES.ITEM}/:id`} element={<ItemPage />} />
-            <Route path='*' element={<Navigate to={ROUTES.HOME} />} />
-          </Routes>
-          <LoginDialog />
-          {isSplashScreen && <SplashScreen />}
-        </BrowserRouter>
-      </Paper>
+        <Paper className='app' color='background' square>
+          <BrowserRouter>
+            <NavBar />
+            <Routes>
+              <Route path={ROUTES.HOME} element={<MainPage />} />
+              <Route path={ROUTES.ORDER} element={<OrderPage />} />
+              <Route path={ROUTES.LIKE} element={<LikePage />} />
+              <Route path={ROUTES.CART} element={<CartPage />} />
+              <Route path={`${ROUTES.ITEM}/:id`} element={<ItemPage />} />
+              <Route path='*' element={<Navigate to={ROUTES.HOME} />} />
+            </Routes>
+            <LoginDialog />
+            {isSplashScreen && <SplashScreen />}
+          </BrowserRouter>
+        </Paper>
     </ThemeProvider>
   );
 });

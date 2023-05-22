@@ -1,18 +1,25 @@
 .keyboard-card {
   display: flex;
   flex-direction: column;
-  min-width: 320px;
+  width: 200px;
   position: relative;
-  .img {
-    width: 320px;
-    height: 240px;
+  .keyboard-image {
     cursor: pointer;
-  }
-  .sale {
-    margin-left: 8px;
-    text-decoration: line-through;
   }
   .buttons {
     margin-left: auto;
+  }
+  .keyboard-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .keyboard-tooltip {
+    background-color: black;
+  }
+  .image-placeholder {
+    width: 200px;
+    height: 200px;
+    background-color: gray;
   }
 }
