@@ -20,6 +20,7 @@ export const LoginDialog = observer(() => {
             fetch( 'http://127.0.0.1:5000/login', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
+                credentials: 'include',
                 body: JSON.stringify(user)
             }).then(
                 res => res.json()
@@ -35,6 +36,7 @@ export const LoginDialog = observer(() => {
             fetch( 'http://127.0.0.1:5000/register', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
+                credentials: 'include',
                 body: JSON.stringify(user)
             }).then(() => {
                 loginStore.toggleSignIn();

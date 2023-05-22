@@ -25,6 +25,7 @@ export const NavBar = observer(() => {
       if (userStore.isSigned){
           fetch( 'http://127.0.0.1:5000/logout', {
               method: 'POST',
+              credentials: 'include',
           }).then(() => {
               userStore.logout();
           })
