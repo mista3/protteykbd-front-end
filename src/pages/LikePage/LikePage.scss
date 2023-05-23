@@ -1,0 +1,13 @@
+.like-page {
+  display: flex;
+  justify-content: center;
+  padding-top: 32px;
+  .items {
+    gap: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 848px;
+    justify-content: center;
+    height: fit-content;
+  }
+}

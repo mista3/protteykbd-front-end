@@ -2,7 +2,14 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Typography, IconButton, Paper } from '@mui/material';
-import { ShoppingCartRounded, LoginRounded, LogoutRounded, HandymanRounded, ViewListRounded} from '@mui/icons-material';
+import {
+  ShoppingCartRounded,
+  LoginRounded,
+  LogoutRounded,
+  HandymanRounded,
+  ViewListRounded,
+  FavoriteRounded,
+} from '@mui/icons-material';
 import { IconLogo } from '@/icons';
 import { userStore } from '@/stores';
 import { getRouteLabel, ROUTES } from '@/routes';
@@ -29,17 +36,17 @@ export const NavBar = observer(() => {
       </div>
       {/* <Search /> */}
       <div className='buttons'>
-        {/* <IconButton onClick={() => nav(ROUTES.LIKE)} color={location.pathname === ROUTES.LIKE ? 'primary' : 'default'}>
-          <FavoriteRounded />
-        </IconButton> */}
         <IconButton onClick={() => nav(ROUTES.HOME)} color={location.pathname === ROUTES.HOME ? 'primary' : 'default'}>
           <ViewListRounded />
         </IconButton>
-        <IconButton onClick={() => nav(ROUTES.CONSTRUCTOR)} color={location.pathname === ROUTES.CONSTRUCTOR ? 'primary' : 'default'}>
-          <HandymanRounded />
+        <IconButton onClick={() => nav(ROUTES.LIKE)} color={location.pathname === ROUTES.LIKE ? 'primary' : 'default'}>
+          <FavoriteRounded />
         </IconButton>
         <IconButton onClick={() => nav(ROUTES.CART)} color={location.pathname === ROUTES.CART ? 'primary' : 'default'}>
           <ShoppingCartRounded />
+        </IconButton>
+        <IconButton onClick={() => nav(ROUTES.CONSTRUCTOR)} color={location.pathname === ROUTES.CONSTRUCTOR ? 'primary' : 'default'}>
+          <HandymanRounded />
         </IconButton>
         <IconButton
           onClick={() => userStore.onSignButtonClick()}

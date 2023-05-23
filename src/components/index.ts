@@ -7,3 +7,4 @@ export * from './CartInfo/CartInfo';
 export * from './Filter/Filter';
 export * from './SplashScreen/SplashScreen';
 export * from './SteamCardWrapper/SteamCardWrapper';
+export * from './CartItem/CartItem';

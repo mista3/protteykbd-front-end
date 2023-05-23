@@ -8,7 +8,9 @@ import './MainPage.scss';
 export const MainPage = observer(() => {
 
   useEffect(() => {
-    itemStore.fetchItems()
+    itemStore.fetchItems();
+    itemStore.fetchCartItems();
+    itemStore.fetchFavItems();
   }, []);
 
   return (
@@ -17,7 +19,7 @@ export const MainPage = observer(() => {
         {itemStore.items.map((item) => (
           <ItemCard key={Math.random()} {...item} />
         ))}
-        </div>
+      </div>
     </div>
   );
 });

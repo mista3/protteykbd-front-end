@@ -16,6 +16,11 @@ export const LoginDialog = observer(() => {
           color='secondary'
           value={userStore.emailInput}
           onChange={(e) => userStore.setEmailInput(e.target.value)}
+          onKeyUp={(e) => {
+            if (e.code === 'Enter') {
+              userStore.auth();
+            }
+          }}
         />
         <TextField
           label='Пароль'
@@ -23,13 +28,18 @@ export const LoginDialog = observer(() => {
           color='secondary'
           value={userStore.passInput}
           onChange={(e) => userStore.setPassInput(e.target.value)}
+          onKeyUp={(e) => {
+            if (e.code === 'Enter') {
+              userStore.auth();
+            }
+          }}
         />
         {userStore.isSignIn ? null : <TextField label='Пароль повторно' type='password' color='secondary' />}
         <Link component='button' variant='body2' color='text.secondary' onClick={() => userStore.toggleSignIn()}>
           {userStore.isSignIn ? 'Нет аккаунта? Зарегистрироваться' : 'Уже есть аккаунт? Войти'}
         </Link>
       </DialogContent>
-      <DialogActions>
+      <DialogActions className='submit-button'>
         <Button onClick={() => userStore.auth()}>{userStore.isSignIn ? 'Войти' : 'Зарегистрироваться'}</Button>
       </DialogActions>
     </Dialog>

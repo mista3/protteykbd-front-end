@@ -20,7 +20,6 @@ class UserStore {
   async autoSignIn() {
     const email = Cookie.get('email');
     const password = Cookie.get('password');
-    console.log(email, password);
     
     if (email && password) {
       const user = await api.signIn({

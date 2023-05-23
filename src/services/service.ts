@@ -9,6 +9,16 @@ export class api {
     return res;
   }
 
+  static async getCartItems():Promise<ItemEntity[]> {
+    const res = await agent.get(`${HOST}/cart`).json<ItemEntity[]>();
+    return res;
+  }
+
+  static async getFavItems():Promise<ItemEntity[]> {
+    const res = await agent.get(`${HOST}/wishlist`).json<ItemEntity[]>();
+    return res;
+  }
+
   static async getItem(id:string): Promise<ItemEntity>{
     const res = await agent.get(`${HOST}/item/${id}`).json<ItemEntity>();
     return res;  
@@ -17,7 +27,6 @@ export class api {
   static async signIn(body: { email: string, password: string }): Promise<UserEntity>{
     const res = await agent.post(`${HOST}/login`, {
       json: body,
-      credentials: 'include',
     }).json<UserEntity>();
     return res;
   }
@@ -29,22 +38,35 @@ export class api {
   }
 
   static async signOut() {
-    await agent.post(`${HOST}/logout`, {
-      credentials: 'include',
-    });
+    await agent.post(`${HOST}/logout`);
   }
 
   static async getConstructor() {
-    const res = await agent.get(`${HOST}/constructor`, {
-      credentials: 'include',
-    }).json();
+    const res = await agent.get(`${HOST}/constructor`).json();
     console.log(res);
   }
 
-  static async getCart() {
-    const res = await agent.get(`${HOST}/cart`, {
-      credentials: 'include',
-    }).json();
-    console.log(res);
+  static async addToCart(body: {item_id:string, item_type:string, quantity:number}) {
+    await agent.post(`${HOST}/cart`, {
+      json: body,
+    }); 
+  }
+
+  static async removeFromCart(id: string) {
+    await agent.delete(`${HOST}/cart`, {
+      json: {item_id: id},
+    }); 
+  }
+
+  static async addToFav(body: {item_id:string, item_type:string, quantity:number}) {
+    await agent.post(`${HOST}/wishlist`, {
+      json: body,
+    }); 
+  }
+
+  static async removeFromFav(id: string) {
+    await agent.delete(`${HOST}/wishlist`, {
+      json: {item_id: id},
+    }); 
   }
 }

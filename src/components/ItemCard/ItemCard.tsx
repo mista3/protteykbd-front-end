@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { Image } from 'antd';
 import {
@@ -9,7 +9,6 @@ import {
   CardActions,
   CardContent,
   IconButton,
-  Checkbox,
   Tooltip,
   styled,
   tooltipClasses, 
@@ -18,11 +17,12 @@ import {
 import {
   AddShoppingCartRounded,
   FavoriteRounded,
-  RemoveShoppingCartRounded,
   ShoppingCartCheckoutRounded,
 } from '@mui/icons-material';
 import { ItemEntity } from '@/entities';
 import { ROUTES } from '@/routes';
+import { api } from '@/services';
+import { itemStore } from '@/stores';
 
 import './ItemCard.scss';
 
@@ -40,17 +40,42 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-export const ItemCard = observer(({ image, name, price, sale, id }: ItemEntity) => {
+export const ItemCard = observer(({ image, name, price, sale, id, quantity }: ItemEntity) => {
   const [isLiked, setLiked] = useState(false);
   const [isCart, setCart] = useState(false);
-
-  const location = useLocation();
 
   const nav = useNavigate();
 
   const onClick = () => {
     nav(`${ROUTES.ITEM}/${id}`);
   };
+  
+  useEffect(() => {
+    setCart(!!itemStore.cartItems.find((cartItem) => cartItem.id === id));
+  }
+    , [itemStore.cartItems])
+  
+  useEffect(() => {
+    setLiked(!!itemStore.favItems.find((favItem) => favItem.id === id));
+  }
+  ,[itemStore.favItems])
+
+  const onCartClick = async () => {
+    if (isCart) nav(ROUTES.CART);
+    else { 
+      await api.addToCart({item_id: id, item_type: 'keyboard', quantity})
+      setCart(true);
+    }
+  }
+
+  const onFavClick = async () => {
+    if (isLiked) { 
+      itemStore.removeFavItem(id);
+    } else {
+      await api.addToFav({item_id: id, item_type: 'keyboard', quantity});
+      setLiked(true);
+    }
+  }
 
   return (
     <Card className='keyboard-card' elevation={1}>
@@ -59,7 +84,6 @@ export const ItemCard = observer(({ image, name, price, sale, id }: ItemEntity) 
         src={`https://ik.imagekit.io/xiultnofr/tr:h-640,w-640/${image}.jpg`}
         onClick={onClick}
         preview={false}
-        placeholder={<div className='image-placeholder'/>}
       />
       <CardContent>
         <LightTooltip  title={name} arrow placement="top" className='keyboard-tooltip'>
@@ -75,36 +99,21 @@ export const ItemCard = observer(({ image, name, price, sale, id }: ItemEntity) 
         )}
       </CardContent>
       <CardActions className='buttons'>
-        <IconButton size='small' color={isLiked ? 'primary' : 'default'} onClick={() => setLiked(!isLiked)}>
+        <IconButton
+          size='small'
+          color={isLiked ? 'primary' : 'default'}
+          onClick={onFavClick}
+        >
           <FavoriteRounded />
         </IconButton>
-        {location.pathname === ROUTES.CART ? (
-          <>
-            <IconButton
-              size='small'
-              onClick={() => {
-                //remove from cart
-              }}
-            >
-              {<RemoveShoppingCartRounded />}
-            </IconButton>
-            <Checkbox size='small' />
-          </>
-        ) : (
-          <>
-            <IconButton
-              size='small'
-              color={isCart ? 'primary' : 'default'}
-              onClick={() => {
-                if (isCart) nav(ROUTES.CART);
-                setCart(true);
-              }}
-            >
-              {isCart ? <ShoppingCartCheckoutRounded /> : <AddShoppingCartRounded />}
-            </IconButton>
-            <Button size='small'>Заказать</Button>
-          </>
-        )}
+        <IconButton
+          size='small'
+          color={isCart ? 'primary' : 'default'}
+          onClick={onCartClick}
+        >
+          {isCart ? <ShoppingCartCheckoutRounded /> : <AddShoppingCartRounded />}
+        </IconButton>
+        <Button size='small'>Заказать</Button>
       </CardActions>
     </Card>
   );

@@ -9,4 +9,8 @@ export const agent = ky.create({
       },
     ],
   },
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  credentials: 'same-origin',
 });

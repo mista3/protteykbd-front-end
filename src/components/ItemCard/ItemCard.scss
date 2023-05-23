@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 200px;
+  height: 338px;
   position: relative;
   .keyboard-image {
     cursor: pointer;
@@ -17,9 +18,8 @@
   .keyboard-tooltip {
     background-color: black;
   }
-  .image-placeholder {
+  .keyboard-image {
     width: 200px;
     height: 200px;
-    background-color: gray;
   }
 }

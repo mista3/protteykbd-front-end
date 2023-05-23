@@ -1,19 +1,21 @@
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { CartInfo } from '@/components';
-import { api } from '@/services';
+import { CartItem } from '@/components';
+import { itemStore } from '@/stores';
 
 import './CartPage.scss';
+import { Typography } from '@mui/material';
 
 export const CartPage = observer(() => {
   useEffect(() => {
-    api.getCart();
+    itemStore.fetchCartItems();
   }, [])
 
   return (
     <div className='page cart-page'>
-      {/* <Items /> */}
-      <CartInfo />
+      {itemStore.cartItems.length?itemStore.cartItems.map((item) => (
+        <CartItem key={Math.random()} {...item} />
+      )):<Typography variant='h4'>Нет данных</Typography>}
     </div>
   );
 });
