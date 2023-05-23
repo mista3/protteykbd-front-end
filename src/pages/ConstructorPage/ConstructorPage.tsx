@@ -1,82 +1,38 @@
-import { api } from '@/services'
-import { constructorStore } from '@/stores';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import {constructorStore, itemStore} from '@/stores';
+import {FormControl, InputLabel, Select, MenuItem, Typography} from '@mui/material';
 import { useEffect } from 'react'
 
 import './ConstructorPage.scss';
 
 export const ConstructorPage = () => {
+  let types: any[] = [];
   useEffect(() => {
-    api.getConstructor()
+    (async () => {
+      await constructorStore.fetchConstructorComponents();
+      console.log(constructorStore.components);
+      types = [...new Set(constructorStore.components)];
+      console.log(types);
+    }
+    )()
   }, []);
-
   return <div className="constructor-page page">
     <div className="component-list">
       <FormControl fullWidth>
-        <InputLabel>База</InputLabel>
-        <Select
-          value={constructorStore.case}
-          onChange={(e)=>constructorStore.setCase(e.target.value)}
-        >
-          <MenuItem value={10}>Tester68</MenuItem>
-          <MenuItem value={20}>GMK67</MenuItem>
-          <MenuItem value={30}>Gas67</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel>Свичи</InputLabel>
-        <Select
-          value={constructorStore.case}
-          onChange={(e)=>constructorStore.setCase(e.target.value)}
-        >
-          <MenuItem value={10}>Tester68</MenuItem>
-          <MenuItem value={20}>GMK67</MenuItem>
-          <MenuItem value={30}>Gas67</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel>Кейкапы</InputLabel>
-        <Select
-          value={constructorStore.case}
-          onChange={(e)=>constructorStore.setCase(e.target.value)}
-        >
-          <MenuItem value={10}>Tester68</MenuItem>
-          <MenuItem value={20}>GMK67</MenuItem>
-          <MenuItem value={30}>Gas67</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel>Стабилизаторы</InputLabel>
-        <Select
-          value={constructorStore.case}
-          onChange={(e)=>constructorStore.setCase(e.target.value)}
-        >
-          <MenuItem value={10}>Tester68</MenuItem>
-          <MenuItem value={20}>GMK67</MenuItem>
-          <MenuItem value={30}>Gas67</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel>Кабель</InputLabel>
-        <Select
-          value={constructorStore.case}
-          onChange={(e)=>constructorStore.setCase(e.target.value)}
-        >
-          <MenuItem value={10}>Tester68</MenuItem>
-          <MenuItem value={20}>GMK67</MenuItem>
-          <MenuItem value={30}>Gas67</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl fullWidth>
-        <InputLabel>Ноб</InputLabel>
-        <Select
-          value={constructorStore.case}
-          onChange={(e)=>constructorStore.setCase(e.target.value)}
-        >
-          <MenuItem value={10}>Tester68</MenuItem>
-          <MenuItem value={20}>GMK67</MenuItem>
-          <MenuItem value={30}>Gas67</MenuItem>
-        </Select>
+        {types.length?types.map((type) => (
+            <>
+            {constructorStore.components.length?constructorStore.components.map((component) => (
+            <>
+              <InputLabel>{type}</InputLabel>
+              <Select
+                value={constructorStore.case}
+                onChange={(e)=>constructorStore.setCase(e.target.value)}
+              >
+              <MenuItem value={10}>Tester68</MenuItem>
+              </Select>
+            </>
+        )): <></>}
+            </>
+        )): <Typography variant='h4'>Нет данных</Typography>}
       </FormControl>
     </div>
   </div>

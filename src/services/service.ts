@@ -41,9 +41,9 @@ export class api {
     await agent.post(`${HOST}/logout`);
   }
 
-  static async getConstructor() {
-    const res = await agent.get(`${HOST}/constructor`).json();
-    console.log(res);
+  static async getConstructor(): Promise<ItemEntity[]>{
+    const res = await agent.get(`${HOST}/constructor`).json<ItemEntity[]>();
+    return res;
   }
 
   static async addToCart(body: {item_id:string, item_type:string, quantity:number}) {
