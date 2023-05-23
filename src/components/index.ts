@@ -8,3 +8,4 @@ export * from './Filter/Filter';
 export * from './SplashScreen/SplashScreen';
 export * from './SteamCardWrapper/SteamCardWrapper';
 export * from './CartItem/CartItem';
+export * from './ComponentSelect/ComponentSelect';

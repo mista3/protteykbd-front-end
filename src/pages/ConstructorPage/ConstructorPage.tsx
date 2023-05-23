@@ -1,10 +1,9 @@
-import {constructorStore, itemStore} from '@/stores';
-import {FormControl, InputLabel, Select, MenuItem, Typography} from '@mui/material';
+import {constructorStore} from '@/stores';
+import {Typography} from '@mui/material';
 import {useEffect, useState} from 'react'
+import {ComponentSelect} from "@/components";
 
 import './ConstructorPage.scss';
-import {ComponentEntity} from "@/entities";
-import {ComponentSelect} from "@/components/ComponentSelect/ComponentSelect";
 
 export const ConstructorPage = () => {
   const [types, setTypes] = useState<string[]>([]);
@@ -18,9 +17,11 @@ export const ConstructorPage = () => {
 
   return <div className="constructor-page page">
     <div className="component-list">
-        {types.length?types.map((type) => (
-          <ComponentSelect type={type}></ComponentSelect>
-        )): <Typography variant='h4'></Typography>}
+      {types.length ?
+        types.map((type) => (
+          <ComponentSelect type={type}/>
+        )) :
+        <Typography variant='h4'>Нет данных</Typography>}
     </div>
   </div>
 }
