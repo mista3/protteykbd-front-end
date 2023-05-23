@@ -6,6 +6,7 @@ import { MainPage, OrderPage, LikePage, CartPage, ItemPage, ConstructorPage } fr
 import { NavBar, LoginDialog, SplashScreen } from '@/components';
 import { darkTheme } from '@/themes';
 import { ROUTES } from '@/routes';
+import { userStore } from './stores';
 
 import './App.scss';
 
@@ -19,6 +20,9 @@ export const App = observer(() => {
       setTimeout(() => {
         setSplashScreen(false);
       }, 5000);
+    }
+    if (!userStore.user) {
+      userStore.autoSignIn();
     }
   }, []);
 

@@ -1,0 +1,12 @@
+.constructor-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .component-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 64px;
+    width: 300px;
+    gap: 16px;
+  }
+}

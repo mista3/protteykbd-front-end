@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import { api } from '@/services';
 
 import './CartInfo.scss';
 
@@ -13,7 +14,7 @@ export const CartInfo = observer(() => {
         <Typography variant='h6'>Итого: 15 500р</Typography>
       </CardContent>
       <CardActions>
-        <Button>Перейти к оплате</Button>
+        <Button onClick={()=>api.getCart()}>Перейти к оплате</Button>
       </CardActions>
     </Card>
   );
