@@ -1,9 +1,9 @@
 import { makeAutoObservable } from 'mobx';
 import {api} from "@/services";
-import {ItemEntity} from "@/entities";
+import {ComponentEntity} from "@/entities";
 
 class ConstructorStore {
-  private _components: ItemEntity[] = [];
+  private _components: ComponentEntity[] = [];
   private _case = '';
 
   constructor() {
