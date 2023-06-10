@@ -8,6 +8,7 @@ class ItemStore {
   private _favItems: ItemEntity[] = [];
   private _item: ItemEntity | null = null;
   private _loading = true;
+  cartSelected = new Set<string>();
 
   constructor() {
     makeAutoObservable(this);
@@ -65,6 +66,12 @@ class ItemStore {
 
   get loading() {
     return this._loading;
+  }
+
+  get totalPrice() {
+    return this._cartItems
+      .filter(({ id }) => this.cartSelected.has(id))
+      .reduce((total, { price }) => total+price, 0)
   }
 }
 

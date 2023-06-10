@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { ThemeProvider, Paper } from '@mui/material';
-import { MainPage, OrderPage, LikePage, CartPage, ItemPage, ConstructorPage } from '@/pages';
+import { MainPage, OrderPage, LikePage, CartPage, ItemPage, ConstructorPage, InfoPage } from '@/pages';
 import { NavBar, LoginDialog, SplashScreen } from '@/components';
 import { darkTheme } from '@/themes';
 import { ROUTES } from '@/routes';
@@ -33,6 +33,7 @@ export const App = observer(() => {
             <NavBar />
             <Routes>
               <Route path={ROUTES.HOME} element={<MainPage />} />
+              <Route path={ROUTES.INFO} element={<InfoPage />} />
               <Route path={ROUTES.ORDER} element={<OrderPage />} />
               <Route path={ROUTES.LIKE} element={<LikePage />} />
               <Route path={ROUTES.CART} element={<CartPage />} />

@@ -1,7 +1,10 @@
 .cart-page {
+  padding-top: 32px;
+}
+
+.cart-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 16px;
   align-items: center;
-  padding-top: 32px;
+  gap: 16px;
 }

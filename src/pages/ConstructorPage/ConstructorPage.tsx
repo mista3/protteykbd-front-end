@@ -11,8 +11,7 @@ export const ConstructorPage = () => {
     (async () => {
       await constructorStore.fetchConstructorComponents();
       setTypes([...new Set(constructorStore.components.map(({type}) => type))]);
-    }
-    )()
+    })()
   }, []);
 
   return <div className="constructor-page page">

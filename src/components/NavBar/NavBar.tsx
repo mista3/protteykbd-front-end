@@ -9,6 +9,7 @@ import {
   HandymanRounded,
   ViewListRounded,
   FavoriteRounded,
+  InfoRounded,
 } from '@mui/icons-material';
 import { IconLogo } from '@/icons';
 import { userStore } from '@/stores';
@@ -36,6 +37,9 @@ export const NavBar = observer(() => {
       </div>
       {/* <Search /> */}
       <div className='buttons'>
+        <IconButton onClick={() => nav(ROUTES.INFO)} color={location.pathname === ROUTES.INFO ? 'primary' : 'default'}>
+          <InfoRounded />
+        </IconButton>
         <IconButton onClick={() => nav(ROUTES.HOME)} color={location.pathname === ROUTES.HOME ? 'primary' : 'default'}>
           <ViewListRounded />
         </IconButton>

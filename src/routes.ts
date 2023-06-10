@@ -5,6 +5,7 @@ export enum ROUTES {
   LIKE = '/like',
   ITEM = '/item',
   CONSTRUCTOR = '/constructor',
+  INFO = '/info',
 }
 
 export const getRouteLabel = (route: string) => {
@@ -12,6 +13,7 @@ export const getRouteLabel = (route: string) => {
   if (route === ROUTES.CART) return 'Корзина';
   if (route === ROUTES.LIKE) return 'Избранное';
   if (route === ROUTES.CONSTRUCTOR) return 'Конструктор';
+  if (route === ROUTES.INFO) return 'Информация';
   if (`/${route.split('/')[0]}` === ROUTES.ITEM) return 'Товар';
   return '';
 };

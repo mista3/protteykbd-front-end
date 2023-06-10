@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { CartItem } from '@/components';
+import { CartInfo, CartItem } from '@/components';
 import { itemStore } from '@/stores';
 
 import './CartPage.scss';
@@ -13,9 +13,12 @@ export const CartPage = observer(() => {
 
   return (
     <div className='page cart-page'>
+      <div className='cart-wrapper'>
       {itemStore.cartItems.length?itemStore.cartItems.map((item) => (
         <CartItem key={Math.random()} {...item} />
-      )):<Typography variant='h4'>Нет данных</Typography>}
+        )):<Typography variant='h4'>Нет данных</Typography>}
+        <CartInfo/>
+      </div>
     </div>
   );
 });
