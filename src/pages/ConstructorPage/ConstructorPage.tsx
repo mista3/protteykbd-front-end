@@ -1,5 +1,5 @@
 import {constructorStore} from '@/stores';
-import {Typography} from '@mui/material';
+import {Button, Typography} from '@mui/material';
 import {useEffect, useState} from 'react'
 import {ComponentSelect} from "@/components";
 
@@ -15,12 +15,16 @@ export const ConstructorPage = () => {
   }, []);
 
   return <div className="constructor-page page">
-    <div className="component-list">
+    <div className='wrapper'>
       {types.length ?
-        types.map((type) => (
-          <ComponentSelect type={type}/>
-        )) :
-        <Typography variant='h4'>Нет данных</Typography>}
+        <div className="component-list">
+          {types.map((type) => (
+            <ComponentSelect type={type}/>
+            ))}
+          <Button>Добавить в корзину</Button>
+        </div> :
+        <Typography variant='h4'>Нет данных</Typography>
+      }
     </div>
   </div>
 }
